@@ -1,7 +1,7 @@
-const exampleParams = [
-  { key: "page", value: 2 },
-  { key: "genres", value: "RPG" },
-];
+// const exampleParams = [
+//   { key: "page", value: 2 },
+//   { key: "genres", value: "RPG" },
+// ];
 
 const API_BASE = "http://rawg.io/api";
 const API_KEY = "DBUJIHASGVDYUHUCZX";
@@ -17,5 +17,5 @@ const queryBuilder = (path, params) => {
   return result;
 };
 
-const result = queryBuilder("/games", exampleParams);
-console.log(result);
+// const result = queryBuilder("/games", exampleParams);
+// console.log(result);
