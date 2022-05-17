@@ -9,7 +9,6 @@ export const useContent = () => {
   const fetchData = useCallback(async () => {
     try {
       const games = await api.games.getGamesData();
-      console.log(games);
       setData({ games });
     } catch (error) {
       console.log(error);

@@ -4,8 +4,8 @@ export const ROUTES = [
     path: "/",
   },
   {
-    name: "FAVORITE",
-    path: "/favorite",
+    name: "FAVORITES",
+    path: "/favorites",
   },
   {
     name: "SETTINGS",

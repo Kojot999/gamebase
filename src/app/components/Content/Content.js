@@ -7,19 +7,14 @@ export const Content = () => {
   const { data, isLoading, error } = useContent();
   const isContentVisible = !isLoading && !error;
   const { games } = data;
-  const GAMES = [
-    {
-      name: "games",
-      data: games,
-    },
-  ];
+
   return (
     <div className={styles.wrapper}>
       <Filterbar />
       {isContentVisible && (
         <>
-          {GAMES.map((props) => (
-            <Tile key={props.name} {...props} />
+          {games.map((props) => (
+            <Tile key={props.id} {...props} />
           ))}
         </>
       )}
