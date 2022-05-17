@@ -1,0 +1,46 @@
+.wrapper {
+  margin-bottom: 10px;
+  .button {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: #23243b;
+    color: white;
+    border-radius: 15px;
+    padding: 0px 10px;
+    min-width: 200px;
+    justify-content: space-between;
+    .arrow {
+      background-color: #ffffff;
+      padding: 5px;
+      border-radius: 3px;
+      img {
+        width: 15px;
+        transition: all 500ms;
+      }
+
+      &.isOpened {
+        img {
+          transform: scale(1, -1);
+          transition: all 500ms;
+        }
+      }
+    }
+  }
+  li {
+    padding: 5px 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: 0.3s all ease-out;
+    border-radius: 3px;
+    &:hover {
+      background: #23243b;
+    }
+  }
+}
+:global(.ReactCollapse--collapse) {
+  transition: height 500ms;
+}

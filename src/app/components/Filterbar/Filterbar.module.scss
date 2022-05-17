@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+  img {
+    width: 20px;
+    margin-right: 5px;
+  }
+  input {
+    background-color: #23243b;
+    border: none;
+    border-radius: 10px;
+    color: white;
+  }
+}
