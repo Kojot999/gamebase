@@ -3,6 +3,7 @@ import { Layout } from "../components/Layout/Layout";
 import { Sidebar } from "../components/Sidebar/Sidebar";
 import { Header } from "../components/Header/Header";
 import { Content } from "../components/Content/Content";
+import { Panel } from "../components/Panel/Panel";
 import "./Root.css";
 
 function Root() {
@@ -11,7 +12,10 @@ function Root() {
       <Sidebar />
       <main>
         <Header />
-        <Content />
+        <>
+          <Panel />
+          <Content />
+        </>
       </main>
     </Layout>
   );
