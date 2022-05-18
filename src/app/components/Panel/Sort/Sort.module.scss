@@ -1,0 +1,42 @@
+.wrapper {
+  height: 100%;
+
+  .button {
+    display: flex;
+    align-items: center;
+    background-color: #23243b;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 10px;
+    white-space: nowrap;
+    cursor: pointer;
+    padding-inline: 10px;
+    &.isOpened {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+  }
+
+  img {
+    width: 20px;
+    padding-right: 2px;
+  }
+
+  .dropdown {
+    list-style: none;
+    color: #fff;
+    position: absolute;
+    background-color: #23243b;
+    border-radius: 10px;
+    cursor: pointer;
+    ul {
+      list-style: none;
+      padding-inline: 5px;
+      margin-top: 10px;
+    }
+    &.isOpened {
+      border-top-left-radius: 0px;
+    }
+  }
+}

@@ -1,22 +1,23 @@
-import { Tile } from "./Tile/Tile";
-import styles from "./Content.module.scss";
+import { StoresTile } from "../../components/Tiles/StoresTile/StoresTile";
+import styles from "./Stores.module.scss";
 import { useContent } from "./useContent";
 
-export const Content = () => {
+export const Stores = () => {
   const { data, isLoading, error } = useContent();
   const isContentVisible = !isLoading && !error;
-  const { games } = data;
+  const { stores } = data;
 
   return (
     <>
       <div className={styles.wrapper}>
         {isContentVisible && (
           <>
-            {games.map((game) => (
-              <Tile key={game.id} data={game} />
+            {stores.map((store) => (
+              <StoresTile key={store.id} data={{ ...store }} />
             ))}
           </>
         )}
+
         {isLoading && <div>Loading...</div>}
         {error && <div>Error: Unknown error</div>}
       </div>
