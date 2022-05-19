@@ -1,6 +1,7 @@
 import styles from "./Tile.module.scss";
 import star from "../../../../Img/star.svg";
 import metacriticIcon from "../../../../Img/metacritic.svg";
+import { PARENT_PLATFORMS_CONFIG } from "../../../constants/platformsParents.config";
 
 export const HomeTile = ({ data }) => {
   const {
@@ -8,7 +9,7 @@ export const HomeTile = ({ data }) => {
     name,
     metacritic,
     background_image: backgroundImage,
-    platforms,
+    parent_platforms,
     genres,
   } = data;
 
@@ -20,7 +21,6 @@ export const HomeTile = ({ data }) => {
           <img alt="" src={backgroundImage} className={styles.gameImg} />
         </div>
         <img alt="star" src={star} className={styles.starIcon} />
-
         <div className={styles.description}>
           <div className={styles.genres}>
             <ul>
@@ -38,8 +38,14 @@ export const HomeTile = ({ data }) => {
         </div>
         <div className={styles.platform}>
           <ul>
-            {platforms.map(({ platform }) => (
-              <li>{platform.name}</li>
+            {parent_platforms.map(({ platform }) => (
+              <li>
+                <img
+                  alt={platform.name}
+                  src={PARENT_PLATFORMS_CONFIG[platform.slug]}
+                  className={styles.platformIcon}
+                />
+              </li>
             ))}
           </ul>
         </div>

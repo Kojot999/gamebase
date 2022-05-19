@@ -8,19 +8,16 @@ export const Stores = () => {
   const { stores } = data;
 
   return (
-    <>
-      <div className={styles.wrapper}>
-        {isContentVisible && (
-          <>
-            {stores.map((store) => (
-              <StoresTile key={store.id} data={{ ...store }} />
-            ))}
-          </>
-        )}
-
-        {isLoading && <div>Loading...</div>}
-        {error && <div>Error: Unknown error</div>}
-      </div>
-    </>
+    <div className={styles.wrapper}>
+      {isContentVisible && (
+        <>
+          {stores.map((store) => (
+            <StoresTile key={store.id} data={{ ...store }} />
+          ))}
+        </>
+      )}
+      {isLoading && <div>Loading...</div>}
+      {error && <div>Error: Unknown error</div>}
+    </div>
   );
 };

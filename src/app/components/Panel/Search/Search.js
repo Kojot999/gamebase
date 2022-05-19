@@ -4,7 +4,7 @@ import search from "../../../../Img/search.svg";
 export const Search = () => {
   return (
     <div className={styles.wrapper}>
-      <img alt="" src={search} />
+      <img alt="search" src={search} />
       <input placeholder="Search..." />
     </div>
   );

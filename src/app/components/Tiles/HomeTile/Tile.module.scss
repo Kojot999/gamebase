@@ -19,7 +19,7 @@
     .wrapperImg {
       width: 100%;
       height: 65%;
-      background-color: #fff;
+      background: #fff;
       overflow: hidden;
       position: relative;
       .title {
@@ -48,9 +48,21 @@
       justify-content: space-between;
       align-items: center;
       padding: 0 5px;
-      margin-top: 10px;
       h3 {
         margin: 0;
+      }
+      .genres {
+        display: flex;
+        ul {
+          display: flex;
+          list-style: none;
+          padding: 0;
+        }
+        a {
+          color: #fff;
+          text-decoration: none;
+          margin-left: 10px;
+        }
       }
       .rating {
         display: flex;
@@ -65,27 +77,22 @@
         }
       }
     }
-    .genres {
-      display: flex;
-      ul {
-        display: flex;
-        list-style: none;
-        padding: 0;
-      }
-      a {
-        color: #fff;
-        text-decoration: none;
-        margin-left: 10px;
-      }
-    }
+
     .platform {
       display: flex;
+      padding: 0 5px;
       ul {
         margin: 0;
         padding: 0;
         display: flex;
         list-style: none;
         gap: 5px;
+        li {
+          margin-left: 10px;
+          .platformIcon {
+            width: 28px;
+          }
+        }
       }
     }
   }
