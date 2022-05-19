@@ -4,7 +4,7 @@ import { Collapse } from "react-collapse";
 import { useState } from "react";
 import clsx from "clsx";
 
-export const Dropdown = ({ data, name, image }) => {
+export const Dropdown = ({ data, name }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   return (
@@ -17,13 +17,7 @@ export const Dropdown = ({ data, name, image }) => {
       </button>
       <Collapse isOpened={isOpened}>
         <ul>
-          {data &&
-            data.results.map(({ name, id }) => (
-              <li key={id}>
-                {image}
-                {name}
-              </li>
-            ))}
+          {data && data.results.map(({ name, id }) => <li key={id}>{name}</li>)}
         </ul>
       </Collapse>
     </div>

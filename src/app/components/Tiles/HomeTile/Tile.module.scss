@@ -1,0 +1,92 @@
+.wrapper {
+  color: #fff;
+  margin: 5px 15px;
+  display: flex;
+  position: relative;
+  .tile {
+    margin: 10px;
+    border-radius: 15px;
+    width: 300px;
+    height: 280px;
+    background-color: rgba(35, 36, 59, 1);
+    background-image: linear-gradient(
+      180deg,
+      rgba(35, 36, 59, 1) 50%,
+      rgba(48, 50, 86, 1) 100%
+    );
+    box-shadow: -10px -10px 20px #090d1f, 10px 10px 20px #111739;
+    overflow: hidden;
+    .wrapperImg {
+      width: 100%;
+      height: 65%;
+      background-color: #fff;
+      overflow: hidden;
+      position: relative;
+      .title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 0 0 5px 10px;
+      }
+      .gameImg {
+        width: 300px;
+        height: 250px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+    }
+    .starIcon {
+      position: absolute;
+      width: 25px;
+      top: 20px;
+      right: 20px;
+    }
+
+    .description {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5px;
+      margin-top: 10px;
+      h3 {
+        margin: 0;
+      }
+      .rating {
+        display: flex;
+        align-items: center;
+        p {
+          margin: 0;
+        }
+        img {
+          width: 15px;
+          height: 15px;
+          margin-right: 5px;
+        }
+      }
+    }
+    .genres {
+      display: flex;
+      ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+      }
+      a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 10px;
+      }
+    }
+    .platform {
+      display: flex;
+      ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+        gap: 5px;
+      }
+    }
+  }
+}
