@@ -34,7 +34,7 @@ export const Sidebar = () => {
         {isContentVisible && (
           <>
             {DROPDOWNS.map((dropdown) => (
-              <Dropdown {...dropdown} />
+              <Dropdown key={dropdown.name} {...dropdown} />
             ))}
           </>
         )}
