@@ -1,6 +1,6 @@
 import styles from "./Sidebar.module.scss";
 import { useSidebar } from "./useSidebar";
-import { Dropdown } from "../Dropdown/Dropdown";
+import { Dropdown } from "./Dropdown/Dropdown";
 import { NavLink } from "react-router-dom";
 
 export const Sidebar = () => {

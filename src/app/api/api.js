@@ -1,21 +1,9 @@
-// const exampleParams = [
-//   { key: "page", value: 2 },
-//   { key: "genres", value: "RPG" },
-// ];
+import { RAWG_API, API_KEY } from "./source";
 
-// const API_BASE = "http://rawg.io/api";
-// const API_KEY = "DBUJIHASGVDYUHUCZX";
+export const queryBuilder = (searchValue) => {
+  const query = "&search=" + (searchValue || "");
 
-// const queryBuilder = (path, params) => {
-//   const query = params
-//     .map((param, index) => {
-//       return (index > 0 ? "&" : "?") + param.key + "=" + param.value;
-//     })
-//     .join("");
-
-//   const result = API_BASE + path + query + "&key=" + API_KEY;
-//   return result;
-// };
-
-// const result = queryBuilder("/games", exampleParams);
-// console.log(result);
+  const result = RAWG_API + "/games" + API_KEY + query;
+  console.log(result);
+  return result;
+};

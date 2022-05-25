@@ -36,7 +36,7 @@
         }
       }
     }
-    .starIcon {
+    .favorities {
       position: absolute;
       width: 23px;
       top: 20px;
@@ -44,7 +44,7 @@
     }
     .rating {
       position: absolute;
-      bottom: 40px;
+      bottom: 30px;
       right: 25px;
       p {
         margin: 0;
@@ -60,9 +60,9 @@
     }
     .description {
       position: absolute;
-      bottom: 20px;
+      bottom: 10px;
       z-index: 2;
-      padding: 0 0 20px 30px;
+      padding: 0 0 20px 25px;
       .title {
         margin: 0;
         font-size: 20px;

@@ -1,5 +1,5 @@
 import styles from "./Dropdown.module.scss";
-import arrowDown from "../../../Img/down-arrow.svg";
+import arrowDown from "../../../../Img/down-arrow.svg";
 import { Collapse } from "react-collapse";
 import { useState } from "react";
 import clsx from "clsx";

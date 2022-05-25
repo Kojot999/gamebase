@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { api } from "../../api";
+import { api } from "../../api/index";
 
 export const useContent = () => {
   const [data, setData] = useState({ games: [] });

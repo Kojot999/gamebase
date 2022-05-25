@@ -1,7 +1,9 @@
 import { composeUrl } from "../utils";
 
-const getStoresData = async () =>
-  await (await fetch(composeUrl("/stores"))).json();
+const getStoresData = async (params) => {
+  console.log({ params });
+  return await (await fetch(composeUrl("/stores"))).json();
+};
 
 export const stores = {
   getStoresData,
