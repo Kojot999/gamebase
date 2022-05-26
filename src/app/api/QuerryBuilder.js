@@ -4,6 +4,6 @@ export const queryBuilder = (searchValue) => {
   const query = "&search=" + (searchValue || "");
 
   const result = RAWG_API + "/games" + API_KEY + query;
-  console.log(result);
+
   return result;
 };

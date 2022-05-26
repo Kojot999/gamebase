@@ -1,7 +1,6 @@
-import { queryBuilder } from "../api";
+import { queryBuilder } from "../QuerryBuilder";
 
 const getGamesData = async ({ search }) => {
-  // to pojdzie do queryBuildera
   return await (await fetch(queryBuilder(search))).json();
 };
 
