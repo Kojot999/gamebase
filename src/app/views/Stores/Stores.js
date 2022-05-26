@@ -1,11 +1,31 @@
 import { StoresTile } from "../../components/Tiles/StoresTile/StoresTile";
 import styles from "./Stores.module.scss";
-import { useContent } from "./useContent";
+import { useEffect } from "react";
 
-export const Stores = () => {
-  const { data, isLoading, error } = useContent();
+export const Stores = ({ store }) => {
+  const {
+    data: stores,
+    isLoading,
+    error,
+    fetchData: fetchStores,
+  } = store.stores;
+  // tutaj wyciagamy dane i funkcje fetchData
+  // ze stora, naszego glownego centrum danych w aplikacji
+
   const isContentVisible = !isLoading && !error;
-  const { stores } = data;
+
+  useEffect(() => {
+    // tutaj zapytanie do api jest wywolywane
+    // poprzez fetchStores mozna wykonac zapytanie jeszcze raz
+    // na przyklad by odswiezyc dane, zmienic parametry lub kontrolowac
+    // po prostu kiedy to zapytanie idzie
+
+    fetchStores();
+
+    // tutaj do fetchStores(->params<-) przekazesz sobie parametry
+    // ktore nastepnie bedziesz mogl wykorzystac w queryBuilderze
+    // do budowania searchQuery - tego bajera z search?
+  }, [fetchStores]);
 
   return (
     <>

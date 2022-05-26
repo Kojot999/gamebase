@@ -1,7 +1,8 @@
-import { composeUrl } from "../utils";
+import { queryBuilder } from "../QuerryBuilder";
 
-const getGamesData = async () =>
-  await (await fetch(composeUrl("/games"))).json();
+const getGamesData = async ({ search }) => {
+  return await (await fetch(queryBuilder(search))).json();
+};
 
 export const games = {
   getGamesData,

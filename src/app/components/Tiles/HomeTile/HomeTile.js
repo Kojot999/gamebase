@@ -1,7 +1,7 @@
 import styles from "./Tile.module.scss";
-import star from "../../../../Img/star.svg";
 import metacriticIcon from "../../../../Img/metacritic.svg";
 import { PLATFORM_ICON_CONFIG } from "../../../constants/platformIcon.config";
+import AddFavoritie from "../../AddFavorites/AddFavorities";
 
 export const HomeTile = ({ data }) => {
   const {
@@ -25,7 +25,9 @@ export const HomeTile = ({ data }) => {
             />
           </div>
         </div>
-        <img alt="star" src={star} className={styles.starIcon} />
+        <div className={styles.favorities}>
+          <AddFavoritie />
+        </div>
         <div className={styles.rating}>
           <p>{metacritic}</p>
           <img alt="metacritic" src={metacriticIcon} />

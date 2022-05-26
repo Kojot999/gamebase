@@ -6,18 +6,31 @@ import { Panel } from "../components/Panel/Panel";
 import "./Root.css";
 import { Route, Routes } from "react-router";
 import { ROUTES } from "../constants/routes";
+import { useGamesData, useStoresData } from "../hooks";
 
 function Root() {
+  const games = useGamesData();
+  const stores = useStoresData();
+
+  const store = {
+    games,
+    stores,
+  };
+
   return (
     <Layout>
       <Sidebar />
       <main>
         <Header />
         <>
-          <Panel />
+          <Panel store={store} />
           <Routes>
             {ROUTES.map(({ path, name, component: View }) => (
-              <Route path={path} key={name} element={<View />}></Route>
+              <Route
+                path={path}
+                key={name}
+                element={<View store={store} />}
+              ></Route>
             ))}
           </Routes>
         </>
