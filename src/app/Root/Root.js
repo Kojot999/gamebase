@@ -19,7 +19,7 @@ function Root() {
 
   return (
     <Layout>
-      <Sidebar />
+      <Sidebar store={store} />
       <main>
         <Header />
         <>

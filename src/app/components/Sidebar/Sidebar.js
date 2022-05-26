@@ -1,9 +1,9 @@
 import styles from "./Sidebar.module.scss";
-import { useSidebar } from "./useSidebar";
+import { useSidebar } from "../../hooks/api/useSidebar";
 import { Dropdown } from "./Dropdown/Dropdown";
 import { NavLink } from "react-router-dom";
 
-export const Sidebar = () => {
+export const Sidebar = ({ store }) => {
   const { data, isLoading, error } = useSidebar();
   const isContentVisible = !isLoading && !error;
   const { platforms, genres } = data;
@@ -11,10 +11,12 @@ export const Sidebar = () => {
     {
       name: "Platforms",
       data: platforms,
+      queryParam: "parent_platforms",
     },
     {
       name: "Genres",
       data: genres,
+      queryParam: "genres",
     },
   ];
 
@@ -34,7 +36,7 @@ export const Sidebar = () => {
         {isContentVisible && (
           <>
             {DROPDOWNS.map((dropdown) => (
-              <Dropdown key={dropdown.name} {...dropdown} />
+              <Dropdown store={store} key={dropdown.name} {...dropdown} />
             ))}
           </>
         )}

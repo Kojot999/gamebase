@@ -1,7 +1,7 @@
-import { composeUrl } from "../utils";
+import { queryBuilder } from "../queryBuilder";
 
 const getPlatformsData = async () =>
-  await (await fetch(composeUrl("/platforms/lists/parents"))).json();
+  await (await fetch(queryBuilder("/platforms/lists/parents"))).json();
 
 export const platforms = {
   getPlatformsData,

@@ -1,12 +1,13 @@
 import { HomeTile } from "../../components/Tiles/HomeTile/HomeTile";
 import styles from "./Home.module.scss";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export const Home = ({ store }) => {
   const { data: games, isLoading, error, fetchData: fetchGames } = store.games;
   // tutaj wyciagamy dane i funkcje fetchData
   // ze stora, naszego glownego centrum danych w aplikacji
-
+  const location = useLocation();
   const isContentVisible = !isLoading && !error;
 
   useEffect(() => {
@@ -15,11 +16,11 @@ export const Home = ({ store }) => {
     // na przyklad by odswiezyc dane, zmienic parametry lub kontrolowac
     // po prostu kiedy to zapytanie idzie
 
-    fetchGames({ search: "" });
+    fetchGames({ params: [{ key: "search", value: "" }] });
     // tutaj do fetchGames(->params<-) przekazesz sobie parametry
     // ktore nastepnie bedziesz mogl wykorzystac w queryBuilderze
     // do budowania searchQuery - tego bajera z search?
-  }, [fetchGames]);
+  }, [fetchGames, location]);
 
   return (
     <>

@@ -1,8 +1,7 @@
-import { composeUrl } from "../utils";
+import { queryBuilder } from "../queryBuilder";
 
-const getStoresData = async (params) => {
-  console.log({ params });
-  return await (await fetch(composeUrl("/stores"))).json();
+const getStoresData = async () => {
+  return await (await fetch(queryBuilder("/stores"))).json();
 };
 
 export const stores = {
