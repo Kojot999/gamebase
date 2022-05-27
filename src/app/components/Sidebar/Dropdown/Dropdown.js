@@ -25,8 +25,8 @@ export const Dropdown = ({ data, name, store, queryParam }) => {
         <ul>
           {data &&
             data.results.map(({ name, id }) => (
-              <li key={id}>
-                <button onClick={() => handleClick(id)}>{name}</button>
+              <li key={id} onClick={() => handleClick(id)}>
+                {name}
               </li>
             ))}
         </ul>

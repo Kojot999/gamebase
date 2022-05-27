@@ -2,6 +2,7 @@ import styles from "./Sidebar.module.scss";
 import { useSidebar } from "../../hooks/api/useSidebar";
 import { Dropdown } from "./Dropdown/Dropdown";
 import { NavLink } from "react-router-dom";
+import { TailSpin } from "react-loader-spinner";
 
 export const Sidebar = ({ store }) => {
   const { data, isLoading, error } = useSidebar();
@@ -40,7 +41,15 @@ export const Sidebar = ({ store }) => {
             ))}
           </>
         )}
-        {isLoading && <div>Loading...</div>}
+        {isLoading && (
+          <div className={styles.loadingwrapper}>
+            <TailSpin
+              className={styles.loading}
+              ariaLabel="loading-indicator"
+              color="white"
+            />
+          </div>
+        )}
         {error && <div>Error: Unknown error</div>}
       </div>
     </div>

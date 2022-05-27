@@ -1,6 +1,7 @@
 import { StoresTile } from "../../components/Tiles/StoresTile/StoresTile";
 import styles from "./Stores.module.scss";
 import { useEffect } from "react";
+import { TailSpin } from "react-loader-spinner";
 
 export const Stores = ({ store }) => {
   const {
@@ -38,7 +39,15 @@ export const Stores = ({ store }) => {
           </>
         )}
 
-        {isLoading && <div>Loading...</div>}
+        {isLoading && (
+          <div className={styles.loadingwrapper}>
+            <TailSpin
+              className={styles.loading}
+              ariaLabel="loading-indicator"
+              color="white"
+            />
+          </div>
+        )}
         {error && <div>Error: Unknown error</div>}
       </div>
     </>

@@ -13,10 +13,15 @@
     padding: 0px 10px;
     min-width: 200px;
     justify-content: space-between;
+    h2 {
+      margin: 8px 0px 8px 0px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
     .arrow {
       background-color: #ffffff;
-      padding: 5px;
-      border-radius: 3px;
+      padding: 2px;
+      border-radius: 8px;
       img {
         width: 15px;
         transition: all 500ms;

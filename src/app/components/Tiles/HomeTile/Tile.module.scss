@@ -1,102 +1,106 @@
 .wrapper {
   color: #fff;
-  margin: 5px 15px;
+  margin: 5px 6px;
   display: flex;
   position: relative;
-  .tile {
-    margin: 10px;
-    border-radius: 15px;
-    width: 300px;
-    height: 280px;
-    box-shadow: -10px -10px 20px #090d1f, 10px 10px 20px #111739;
-    overflow: hidden;
+  .navLink {
+    text-decoration: none;
+    color: #fff;
+    .tile {
+      margin: 10px;
+      border-radius: 15px;
+      width: 300px;
+      height: 280px;
+      box-shadow: -10px -10px 20px #090d1f, 10px 10px 20px #111739;
+      overflow: hidden;
 
-    .wrapperImg {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      .overlay {
-        position: absolute;
+      .wrapperImg {
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-          360deg,
-          rgba(0, 0, 0, 0.81) 26.25%,
-          rgba(49, 49, 49, 0.243) 100%,
-          rgba(49, 49, 49, 0) 100%
-        );
-        .gameImg {
-          position: relative;
-          width: 300px;
-          height: 280px;
-          object-fit: cover;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-          z-index: -1;
-        }
-      }
-    }
-    .favorities {
-      position: absolute;
-      width: 23px;
-      top: 20px;
-      right: 25px;
-    }
-    .rating {
-      position: absolute;
-      bottom: 30px;
-      right: 25px;
-      p {
-        margin: 0;
-        font-size: 12px;
-        padding-left: 4px;
-        padding-bottom: 4px;
-      }
-      img {
-        width: 21px;
-        height: 21px;
-        margin-right: 5px;
-      }
-    }
-    .description {
-      position: absolute;
-      bottom: 10px;
-      z-index: 2;
-      padding: 0 0 20px 25px;
-      .title {
-        margin: 0;
-        font-size: 20px;
-        opacity: 0.9;
-      }
-      .genres {
-        ul {
-          display: flex;
-          list-style: none;
-          gap: 13px;
-          padding: 0;
-          margin: 0;
-          li {
-            a {
-              font-size: 14px;
-              opacity: 0.7;
-              color: #fff;
-              text-decoration: none;
-            }
+        position: relative;
+        .overlay {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            360deg,
+            rgba(0, 0, 0, 0.81) 26.25%,
+            rgba(49, 49, 49, 0.243) 100%,
+            rgba(49, 49, 49, 0) 100%
+          );
+          .gameImg {
+            position: relative;
+            width: 300px;
+            height: 280px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            z-index: -1;
           }
         }
       }
-      .platform {
-        margin: 10px 0 0 2px;
-        ul {
+      .favorities {
+        position: absolute;
+        width: 23px;
+        top: 20px;
+        right: 25px;
+      }
+      .rating {
+        position: absolute;
+        bottom: 30px;
+        right: 25px;
+        p {
           margin: 0;
-          padding: 0;
-          display: flex;
-          list-style: none;
-          gap: 13px;
-          li {
-            .platformIcon {
-              width: 20px;
-              height: 20px;
+          font-size: 12px;
+          padding-left: 4px;
+          padding-bottom: 4px;
+        }
+        img {
+          width: 21px;
+          height: 21px;
+          margin-right: 5px;
+        }
+      }
+      .description {
+        position: absolute;
+        bottom: 10px;
+        z-index: 2;
+        padding: 0 0 20px 25px;
+        .title {
+          margin: 0;
+          font-size: 20px;
+          opacity: 0.9;
+        }
+        .genres {
+          ul {
+            display: flex;
+            list-style: none;
+            gap: 13px;
+            padding: 0;
+            margin: 0;
+            li {
+              a {
+                font-size: 14px;
+                opacity: 0.7;
+                color: #fff;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+        .platform {
+          margin: 10px 0 0 2px;
+          ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            list-style: none;
+            gap: 13px;
+            li {
+              .platformIcon {
+                width: 20px;
+                height: 20px;
+              }
             }
           }
         }

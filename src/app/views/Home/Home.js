@@ -2,6 +2,7 @@ import { HomeTile } from "../../components/Tiles/HomeTile/HomeTile";
 import styles from "./Home.module.scss";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { TailSpin } from "react-loader-spinner";
 
 export const Home = ({ store }) => {
   const { data: games, isLoading, error, fetchData: fetchGames } = store.games;
@@ -23,19 +24,25 @@ export const Home = ({ store }) => {
   }, [fetchGames, location]);
 
   return (
-    <>
-      <div className={styles.wrapper}>
-        {isContentVisible && (
-          <>
-            {games.map((game) => (
-              <HomeTile key={game.id} data={game} />
-            ))}
-          </>
-        )}
+    <div className={styles.wrapper}>
+      {isContentVisible && (
+        <>
+          {games.map((game) => (
+            <HomeTile key={game.id} data={game} />
+          ))}
+        </>
+      )}
 
-        {isLoading && <div>Loading...</div>}
-        {error && <div>Error: Unknown error</div>}
-      </div>
-    </>
+      {isLoading && (
+        <div className={styles.loadingwrapper}>
+          <TailSpin
+            className={styles.loading}
+            ariaLabel="loading-indicator"
+            color="white"
+          />
+        </div>
+      )}
+      {error && <div>Error: Unknown error</div>}
+    </div>
   );
 };
