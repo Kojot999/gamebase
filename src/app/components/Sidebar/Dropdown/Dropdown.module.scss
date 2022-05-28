@@ -9,19 +9,17 @@
     cursor: pointer;
     background-color: #23243b;
     color: white;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 0px 10px;
-    min-width: 200px;
+    min-width: 160px;
     justify-content: space-between;
     h2 {
-      margin: 8px 0px 8px 0px;
+      margin: 8px 0 8px 0;
       font-weight: 400;
       letter-spacing: 1px;
     }
     .arrow {
-      background-color: #ffffff;
-      padding: 2px;
-      border-radius: 8px;
+      margin-top: 4px;
       img {
         width: 15px;
         transition: all 500ms;

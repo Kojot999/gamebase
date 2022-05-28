@@ -1,6 +1,13 @@
 .wrapper {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  .wrapperPanel {
+    display: flex;
+  }
+  .wrapperTiles {
+    display: flex;
+    flex-wrap: wrap;
+  }
   .loadingwrapper {
     display: flex;
     width: 100%;

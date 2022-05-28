@@ -10,7 +10,6 @@ export const Dropdown = ({ data, name, store, queryParam }) => {
 
   const handleClick = (id) => {
     fetchGames({ params: [{ key: queryParam, value: id }] });
-    console.log(id);
   };
 
   return (
