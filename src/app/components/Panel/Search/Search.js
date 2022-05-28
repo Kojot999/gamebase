@@ -8,6 +8,7 @@ export const Search = ({ store }) => {
   const location = useLocation();
   const { fetchData: fetchGames } = store.games;
   const [inputValue, setInputValue] = useState("");
+  const [isFocus, setIsFocus] = useState(false);
   const debouncedValue = useDebounce(inputValue, 500);
 
   const inputChange = (text) => {
@@ -15,11 +16,13 @@ export const Search = ({ store }) => {
   };
 
   useEffect(() => {
-    fetchGames({ search: debouncedValue });
+    if (isFocus) {
+      fetchGames({ params: [{ key: "search", value: debouncedValue }] });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValue, fetchGames]);
 
   useEffect(() => {
-    console.log(location);
     setInputValue("");
   }, [location]);
 
@@ -31,6 +34,8 @@ export const Search = ({ store }) => {
         placeholder="Search..."
         onChange={inputChange}
         value={inputValue}
+        onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
       />
     </div>
   );

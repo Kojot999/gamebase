@@ -4,8 +4,13 @@ import { Collapse } from "react-collapse";
 import { useState } from "react";
 import clsx from "clsx";
 
-export const Dropdown = ({ data, name }) => {
+export const Dropdown = ({ data, name, store, queryParam }) => {
   const [isOpened, setIsOpened] = useState(false);
+  const { fetchData: fetchGames } = store.games;
+
+  const handleClick = (id) => {
+    fetchGames({ params: [{ key: queryParam, value: id }] });
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -17,7 +22,12 @@ export const Dropdown = ({ data, name }) => {
       </button>
       <Collapse isOpened={isOpened}>
         <ul>
-          {data && data.results.map(({ name, id }) => <li key={id}>{name}</li>)}
+          {data &&
+            data.results.map(({ name, id }) => (
+              <li key={id} onClick={() => handleClick(id)}>
+                {name}
+              </li>
+            ))}
         </ul>
       </Collapse>
     </div>

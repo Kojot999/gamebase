@@ -2,7 +2,6 @@ import React from "react";
 import { Layout } from "../components/Layout/Layout";
 import { Sidebar } from "../components/Sidebar/Sidebar";
 import { Header } from "../components/Header/Header";
-import { Panel } from "../components/Panel/Panel";
 import "./Root.css";
 import { Route, Routes } from "react-router";
 import { ROUTES } from "../constants/routes";
@@ -19,11 +18,10 @@ function Root() {
 
   return (
     <Layout>
-      <Sidebar />
+      <Sidebar store={store} />
       <main>
         <Header />
         <>
-          <Panel store={store} />
           <Routes>
             {ROUTES.map(({ path, name, component: View }) => (
               <Route

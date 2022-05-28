@@ -19,7 +19,6 @@ export const Header = () => {
             )
         )}
       </div>
-      <div className={styles.wrapperTheme}></div>
     </div>
   );
 };
