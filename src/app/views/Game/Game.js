@@ -1,5 +1,4 @@
 import styles from "./Game.module.scss";
-import { TailSpin } from "react-loader-spinner";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { useGameData } from "../../hooks/api/useGameData";
@@ -79,6 +78,17 @@ export const GameView = () => {
             </div>
             <div className={styles.descriptionwrapper}>
               <h3 className={styles.title}>{name}</h3>
+              <p className={styles.released}>Released: {released}</p>
+              <div className={styles.developers}>
+                <ul>
+                  <p>Developers: </p>
+                  {developers.map((developers) => (
+                    <li key={developers.id}>
+                      <p>{developers.name}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <div className={styles.genres}>
                 <ul>
                   {genres.map((genres) => (
@@ -121,11 +131,7 @@ export const GameView = () => {
       )}
       {isLoading && (
         <div className={styles.loadingwrapper}>
-          <TailSpin
-            className={styles.loading}
-            ariaLabel="loading-indicator"
-            color="white"
-          />
+          <p>Loading...</p>
         </div>
       )}
       {error && <div>Error: Unknown error</div>}

@@ -19,7 +19,7 @@
     transition: all 500ms;
     cursor: pointer;
     &.isOpened {
-      height: 94%;
+      height: fit-content;
     }
   }
 }

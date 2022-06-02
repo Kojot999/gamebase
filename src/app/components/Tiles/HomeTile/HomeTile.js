@@ -39,7 +39,7 @@ export const HomeTile = ({ data }) => {
             <ul>
               {genres.slice(0, 3).map((genres) => (
                 <li key={genres.id}>
-                  <a href="/">#{genres.name}</a>
+                  <p>#{genres.name}</p>
                 </li>
               ))}
             </ul>
