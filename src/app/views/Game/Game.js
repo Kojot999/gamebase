@@ -1,5 +1,4 @@
 import styles from "./Game.module.scss";
-import { TailSpin } from "react-loader-spinner";
 import { useParams } from "react-router";
 import { useEffect } from "react";
 import { useGameData } from "../../hooks/api/useGameData";
@@ -98,11 +97,7 @@ export const GameView = () => {
       )}
       {isLoading && (
         <div className={styles.loadingwrapper}>
-          <TailSpin
-            className={styles.loading}
-            ariaLabel="loading-indicator"
-            color="white"
-          />
+          <p>Loading...</p>
         </div>
       )}
       {error && <div>Error: Unknown error</div>}
