@@ -1,0 +1,35 @@
+.wrapper {
+  margin: 15px 0;
+  display: flex;
+  width: 32%;
+  .stores {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(35, 36, 59, 1);
+    background-image: linear-gradient(
+      180deg,
+      rgba(35, 36, 59, 1) 50%,
+      rgba(48, 50, 86, 1) 100%
+    );
+    box-shadow: -10px -10px 20px #090d1f, 10px 10px 20px #111739;
+    border-radius: 15px;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    align-items: center;
+    h2 {
+      margin: 10px 0 0 0;
+    }
+    img {
+      width: 30px;
+      margin-right: 5px;
+    }
+    .wrapperItems {
+      display: flex;
+      flex-direction: column;
+      .items {
+        display: flex;
+      }
+    }
+  }
+}

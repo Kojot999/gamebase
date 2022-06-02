@@ -2,7 +2,6 @@ import { HomeTile } from "../../components/Tiles/HomeTile/HomeTile";
 import styles from "./Home.module.scss";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { TailSpin } from "react-loader-spinner";
 import { Panel } from "../../components/Panel/Panel";
 
 export const Home = ({ store }) => {
@@ -40,11 +39,7 @@ export const Home = ({ store }) => {
 
         {isLoading && (
           <div className={styles.loadingwrapper}>
-            <TailSpin
-              className={styles.loading}
-              ariaLabel="loading-indicator"
-              color="white"
-            />
+            <p>Loading...</p>
           </div>
         )}
         {error && <div>Error: Unknown error</div>}
