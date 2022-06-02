@@ -1,3 +1,145 @@
 .wrapper {
+  text-decoration: none;
   color: #fff;
+  color: #fff;
+  margin: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  .tileMain {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    border-radius: 15px;
+    box-shadow: -10px -10px 20px #090d1f, 10px 10px 20px #111739;
+    overflow: hidden;
+    .wrapperImg {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          360deg,
+          rgba(0, 0, 0, 0.81) 26.25%,
+          rgba(49, 49, 49, 0.243) 100%,
+          rgba(49, 49, 49, 0) 100%
+        );
+        .gameImg {
+          width: 100%;
+          position: relative;
+          object-fit: scale-down;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          z-index: -1;
+        }
+      }
+    }
+    .favorites {
+      position: absolute;
+      width: 23px;
+      top: 15px;
+      right: 20px;
+      z-index: 5;
+    }
+    .rating {
+      position: absolute;
+      bottom: 20px;
+      right: 25px;
+      p {
+        margin: 0;
+        font-size: 12px;
+        padding-left: 4px;
+        padding-bottom: 4px;
+      }
+      img {
+        width: 21px;
+        height: 21px;
+        margin-right: 5px;
+      }
+    }
+    .descriptionwrapper {
+      position: absolute;
+      bottom: 10px;
+      z-index: 2;
+      padding: 0 0 10px 25px;
+      .title {
+        margin: 0;
+        font-size: 30px;
+        opacity: 0.9;
+      }
+      .stores {
+        ul {
+          display: flex;
+          list-style: none;
+          gap: 13px;
+          padding: 0;
+          margin: 0;
+          align-items: center;
+          li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+
+        img {
+          width: 30px;
+        }
+      }
+
+      .genres,
+      .developers,
+      .released {
+        margin: 0;
+        ul {
+          display: flex;
+          list-style: none;
+          gap: 13px;
+          padding: 0;
+          margin: 5px 0 0 0;
+          li {
+            a {
+              font-size: 16px;
+              opacity: 0.7;
+              color: #fff;
+              text-decoration: none;
+            }
+          }
+        }
+        p {
+          margin: 0px;
+        }
+      }
+      .platform {
+        margin: 10px 0 8px 2px;
+        ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          list-style: none;
+          gap: 13px;
+          li {
+            .platformIcon {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .secondaryTiles {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .loadingwrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
 }

@@ -14,5 +14,5 @@ export const useStoresData = () => {
   // bez potrzeby ponownego przepisywania kodu (co jest antypatternem)
 
   //zwracamy dane do właściwego hooka
-  return { data, isLoading, isError, fetchData };
+  return { data: data.results, isLoading, isError, fetchData };
 };
