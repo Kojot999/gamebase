@@ -23,7 +23,7 @@ export const useApi = ({ initialState, request }) => {
         const data = await request(params);
         // tutaj paramsy przekazywane są dalej do właściwego zapytania api
         // i query buildera
-        console.log(data);
+
         setData(data);
       } catch (error) {
         console.log(error);

@@ -6,6 +6,7 @@
   display: flex;
   position: relative;
   width: 300px;
+  z-index: 2;
   .tile {
     border-radius: 15px;
     width: 300px;
@@ -37,11 +38,13 @@
         }
       }
     }
-    .favorities {
+    .favorites {
       position: absolute;
       width: 23px;
       top: 15px;
       right: 20px;
+      z-index: 5;
+      cursor: pointer;
     }
     .rating {
       position: absolute;

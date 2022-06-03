@@ -1,8 +1,9 @@
 import styles from "./Tile.module.scss";
 import metacriticIcon from "../../../../Img/metacritic.svg";
 import { PLATFORM_ICON_CONFIG } from "../../../constants/platformIcon.config";
-import { AddFavoritie } from "../../AddFavorites/AddFavorities";
+import { AddFavorite } from "../../AddFavorites/AddFavorites";
 import { Link } from "react-router-dom";
+import { useFavorites } from "../../../hooks/api/useFavorites";
 
 export const HomeTile = ({ data }) => {
   const {
@@ -13,6 +14,8 @@ export const HomeTile = ({ data }) => {
     parent_platforms: parentPlatforms,
     genres,
   } = data;
+
+  const [favorite, addFavoriteGame] = useFavorites();
 
   return (
     <Link key={id} className={styles.link} to={`/game/${id}`}>
@@ -26,8 +29,12 @@ export const HomeTile = ({ data }) => {
             />
           </div>
         </div>
-        <div className={styles.favorities}>
-          <AddFavoritie />
+        <div className={styles.favorites}>
+          <AddFavorite
+            favorite={favorite}
+            setFavorite={addFavoriteGame}
+            id={id}
+          />
         </div>
         <div className={styles.rating}>
           <p>{metacritic}</p>

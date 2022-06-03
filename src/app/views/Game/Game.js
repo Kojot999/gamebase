@@ -1,13 +1,14 @@
 import styles from "./Game.module.scss";
 import { useParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useGameData } from "../../hooks/api/useGameData";
-import { AddFavoritie } from "../../components/AddFavorites/AddFavorities";
+import { AddFavorite } from "../../components/AddFavorites/AddFavorites";
 import metacriticIcon from "../../../Img/metacritic.svg";
 import { PLATFORM_ICON_CONFIG } from "../../constants/platformIcon.config";
 import { StoresTile } from "../../components/Tiles/GameTiles/StoresTile/StoresTile";
 import { DescriptionTile } from "../../components/Tiles/GameTiles/DescriptionTile/DescriptionTile";
 import { ScreenShotsTile } from "../../components/Tiles/GameTiles/ScreenShootsTile/ScreenShotsTile";
+import { useFavorites } from "../../hooks/api/useFavorites";
 
 export const GameView = () => {
   const { data: game, isLoading, error, fetchData: fetchGame } = useGameData();
@@ -31,26 +32,8 @@ export const GameView = () => {
     fetchGame({ id: params.id });
   }, [fetchGame, params.id]);
 
-  const [favorite, setFavorite] = useState(() => {
-    if (
-      localStorage.getItem("favorite") !== null &&
-      localStorage.getItem("favorite") !== "undefined"
-    ) {
-      let data = JSON.parse(localStorage.getItem("favorite"));
-      return data;
-    } else {
-      return [];
-    }
-  });
-  const addFavoriteGame = (game) => {
-    const newFavouriteList = [...favorite, game];
-    setFavorite(newFavouriteList);
-  };
-  useEffect(() => {
-    localStorage.setItem("favorite", JSON.stringify(favorite));
-  }, [favorite]);
+  const [favorite, addFavoriteGame] = useFavorites();
 
-  console.log(favorite);
   return (
     <div className={styles.wrapper}>
       {isContentVisible && (
@@ -66,7 +49,7 @@ export const GameView = () => {
               </div>
             </div>
             <div className={styles.favorites}>
-              <AddFavoritie
+              <AddFavorite
                 favorite={favorite}
                 setFavorite={addFavoriteGame}
                 id={id}
