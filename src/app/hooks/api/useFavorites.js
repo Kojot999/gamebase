@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useFavorites = (setItems) => {
+export const useFavorites = () => {
   const [favorite, setFavorite] = useState(() => {
     if (
       localStorage.getItem("favorite") !== null &&
@@ -21,7 +21,6 @@ export const useFavorites = (setItems) => {
     localStorage.setItem("favorite", JSON.stringify(newArray));
 
     setFavorite(newArray);
-    setItems((prevState) => [...prevState]);
   };
 
   return [favorite, addFavoriteGame, setFavorite];

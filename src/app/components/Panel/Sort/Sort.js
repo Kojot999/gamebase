@@ -3,6 +3,7 @@ import sort from "../../../../Img/sort.svg";
 import { Collapse } from "react-collapse";
 import { useState } from "react";
 import clsx from "clsx";
+import { SORT_CONFIG } from "../../../constants/sort.config";
 
 export const Sort = ({ store }) => {
   const [isOpened, setIsOpened] = useState(false);
@@ -25,10 +26,11 @@ export const Sort = ({ store }) => {
       <div className={clsx(styles.dropdown, { [styles.isOpened]: isOpened })}>
         <Collapse isOpened={isOpened}>
           <ul>
-            <li onClick={() => handleClick("metacritic")}>Rating Lowest</li>
-            <li onClick={() => handleClick("-metacritic")}>Rating Highest</li>
-            <li onClick={() => handleClick("-released")}>Newest</li>
-            <li onClick={() => handleClick("released")}>Oldest</li>
+            {SORT_CONFIG.map(({ sort, text }) => (
+              <li key={text} onClick={() => handleClick(sort)}>
+                {text}
+              </li>
+            ))}
           </ul>
         </Collapse>
       </div>

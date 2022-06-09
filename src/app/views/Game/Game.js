@@ -1,6 +1,6 @@
 import styles from "./Game.module.scss";
 import { useParams } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useGameData } from "../../hooks/api/useGameData";
 import { AddFavorite } from "../../components/AddFavorites/AddFavorites";
 import metacriticIcon from "../../../Img/metacritic.svg";
@@ -9,6 +9,8 @@ import { StoresTile } from "../../components/Tiles/GameTiles/StoresTile/StoresTi
 import { DescriptionTile } from "../../components/Tiles/GameTiles/DescriptionTile/DescriptionTile";
 import { ScreenShotsTile } from "../../components/Tiles/GameTiles/ScreenShootsTile/ScreenShotsTile";
 import { useFavorites } from "../../hooks/api/useFavorites";
+import Modal from "react-modal";
+import { useGameScreenShots } from "../../hooks/api/useGameScreenShots";
 
 export const GameView = () => {
   const { data: game, isLoading, error, fetchData: fetchGame } = useGameData();
@@ -25,14 +27,24 @@ export const GameView = () => {
     developers,
     stores,
     description_raw: description,
-    background_image_additional: screenShots,
+    background_image_additional: additionalImg,
   } = game;
+
+  const { data: screenShots, fetchData: fetchScreenShots } =
+    useGameScreenShots();
+
+  const { results } = screenShots;
 
   useEffect(() => {
     fetchGame({ id: params.id });
-  }, [fetchGame, params.id]);
+    fetchScreenShots({ id: params.id });
+  }, [fetchGame, fetchScreenShots, params.id]);
 
   const [favorite, addFavoriteGame] = useFavorites();
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  Modal.setAppElement("#root");
 
   return (
     <div className={styles.wrapper}>
@@ -61,17 +73,6 @@ export const GameView = () => {
             </div>
             <div className={styles.descriptionwrapper}>
               <h3 className={styles.title}>{name}</h3>
-              <p className={styles.released}>Released: {released}</p>
-              <div className={styles.developers}>
-                <ul>
-                  <p>Developers: </p>
-                  {developers.map((developers) => (
-                    <li key={developers.id}>
-                      <p>{developers.name}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
               <div className={styles.genres}>
                 <ul>
                   {genres.map((genres) => (
@@ -107,8 +108,21 @@ export const GameView = () => {
           </div>
           <div className={styles.secondaryTiles}>
             <DescriptionTile description={description} />
-            <ScreenShotsTile screenShots={screenShots} />
+            <ScreenShotsTile
+              additionalImg={additionalImg}
+              setModalIsOpen={setModalIsOpen}
+            />
             <StoresTile stores={stores} />
+          </div>
+          <div>
+            <Modal isOpen={modalIsOpen}>
+              <button onClick={() => setModalIsOpen(false)}>Close</button>
+              {results.map(({ id, image }) => (
+                <div key={id} className={styles.screenShots}>
+                  <img alt="Screen Shot" src={image} />
+                </div>
+              ))}
+            </Modal>
           </div>
         </>
       )}

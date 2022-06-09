@@ -6,12 +6,15 @@ export const AddFavorite = ({ favorite, setFavorite, id }) => {
   return (
     <div className={styles.wrapper}>
       <img
-        alt="star"
+        alt={
+          favorite.includes(id) ? "remove from favorites" : "add to favorites"
+        }
         src={favorite.includes(id) ? starFilled : star}
         className={styles.starIcon}
         id="image"
         onClick={(e) => {
           e.stopPropagation();
+          e.preventDefault();
           setFavorite(id);
         }}
       />
