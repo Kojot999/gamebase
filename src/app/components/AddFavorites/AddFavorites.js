@@ -11,7 +11,6 @@ export const AddFavorite = ({ favorite, setFavorite, id }) => {
         }
         src={favorite.includes(id) ? starFilled : star}
         className={styles.starIcon}
-        id="image"
         onClick={(e) => {
           e.stopPropagation();
           e.preventDefault();
