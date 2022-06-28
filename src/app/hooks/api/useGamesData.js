@@ -7,5 +7,11 @@ export const useGamesData = () => {
     request: api.games.getGamesData,
   });
 
-  return { data: data.results, isLoading, isError, fetchData };
+  return {
+    data: data.results,
+    isLoading,
+    isError,
+    fetchData,
+    count: data.count,
+  };
 };

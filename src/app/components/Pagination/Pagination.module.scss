@@ -1,0 +1,23 @@
+.wrapper {
+  color: #fff;
+  .list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    a {
+      color: #fff;
+      font-size: 20px;
+      padding-inline: 10px;
+      text-decoration: none;
+      &:hover {
+        background: #23243b;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+    .selected {
+      background: #23243b;
+      border-radius: 5px;
+    }
+  }
+}
