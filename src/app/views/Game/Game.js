@@ -9,8 +9,10 @@ import { StoresTile } from "../../components/Tiles/GameTiles/StoresTile/StoresTi
 import { DescriptionTile } from "../../components/Tiles/GameTiles/DescriptionTile/DescriptionTile";
 import { ScreenShotsTile } from "../../components/Tiles/GameTiles/ScreenShootsTile/ScreenShotsTile";
 import { useFavorites } from "../../hooks/api/useFavorites";
-import Modal from "react-modal";
+import ReactModal from "react-modal";
 import { useGameScreenShots } from "../../hooks/api/useGameScreenShots";
+import close from "../../../Img/close.svg";
+import ImageGallery from "react-image-gallery";
 
 export const GameView = () => {
   const { data: game, isLoading, error, fetchData: fetchGame } = useGameData();
@@ -35,6 +37,11 @@ export const GameView = () => {
 
   const { results } = screenShots;
 
+  const images = results?.map(({ image }) => ({
+    original: image,
+    thumbnail: image,
+  }));
+
   useEffect(() => {
     fetchGame({ id: params.id });
     fetchScreenShots({ id: params.id });
@@ -44,7 +51,7 @@ export const GameView = () => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  Modal.setAppElement("#root");
+  ReactModal.setAppElement("#root");
 
   return (
     <div className={styles.wrapper}>
@@ -115,14 +122,17 @@ export const GameView = () => {
             <StoresTile stores={stores} />
           </div>
           <div>
-            <Modal isOpen={modalIsOpen}>
-              <button onClick={() => setModalIsOpen(false)}>Close</button>
-              {results.map(({ id, image }) => (
-                <div key={id} className={styles.screenShots}>
-                  <img alt="Screen Shot" src={image} />
-                </div>
-              ))}
-            </Modal>
+            <ReactModal isOpen={modalIsOpen} contentLabel="Modal as">
+              <div className={styles.wrapperModal}>
+                <img
+                  alt=""
+                  scr={close}
+                  onClick={() => setModalIsOpen(false)}
+                  className={styles.close}
+                />
+                <ImageGallery items={images} />
+              </div>
+            </ReactModal>
           </div>
         </>
       )}

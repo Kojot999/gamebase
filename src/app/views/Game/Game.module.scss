@@ -1,3 +1,4 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
 .wrapper {
   text-decoration: none;
   color: #fff;
@@ -142,5 +143,47 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
+  }
+}
+
+.modal {
+  background: black;
+}
+
+:global(.ReactModalPortal) {
+  position: relative;
+  z-index: 999;
+}
+
+:global(.ReactModal__Overlay) {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+:global(.ReactModal__Content) {
+  max-width: 1000px;
+  padding: 0 !important;
+  position: relative;
+  max-height: 1000px !important;
+  right: initial !important;
+  left: initial !important;
+  border: none !important;
+  background: none !important;
+}
+
+.close {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 30px;
+  height: 30px;
+  z-index: 9999 !important;
+}
+.screenShots {
+  img {
+    width: 100%;
+    border-radius: 20px;
   }
 }

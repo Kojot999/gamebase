@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Pagination.module.scss";
+import arrow from "../../../Img/double arrow.svg";
 
 export const Pagination = ({ count, setPage }) => {
   const pageNumbers = [];
@@ -9,7 +10,19 @@ export const Pagination = ({ count, setPage }) => {
   }
 
   const [pageNumber, setPageNumber] = useState(0);
-  console.log(pageNumber);
+
+  const paginationItems = () => {
+    if (pageNumber === pageNumbers) {
+      return [];
+    } else {
+      return pageNumbers.slice(
+        pageNumber === 0 ? pageNumber : pageNumber - 1,
+        pageNumber >= 10000 ? pageNumber + 5 : pageNumber + 10
+      );
+    }
+  };
+
+  console.log({ pageNumber });
 
   return (
     <div className={styles.wrapper}>
@@ -20,27 +33,22 @@ export const Pagination = ({ count, setPage }) => {
             setPageNumber(0);
           }}
         >
-          First
+          <img alt="First" src={arrow} className={styles.arrowRight} />
         </li>
-        {pageNumbers
-          .slice(
-            pageNumber === 0 ? pageNumber : pageNumber - 1,
-            pageNumber >= 10000 ? pageNumber + 5 : pageNumber + 10
-          )
-          .map((number) => (
-            <li key={number}>
-              <NavLink
-                className={(item) => (item.isActive ? styles.selected : "")}
-                onClick={() => {
-                  setPage(number);
-                  setPageNumber(number - 1);
-                }}
-                to=""
-              >
-                {number}
-              </NavLink>
-            </li>
-          ))}
+        {paginationItems().map((number) => (
+          <li key={number}>
+            <NavLink
+              className={(item) => (item.isActive ? styles.selected : "")}
+              onClick={() => {
+                setPage(number);
+                setPageNumber(number - 1);
+              }}
+              to=""
+            >
+              {number}
+            </NavLink>
+          </li>
+        ))}
 
         <li
           onClick={() => {
@@ -48,7 +56,7 @@ export const Pagination = ({ count, setPage }) => {
             setPageNumber(pageNumbers.length);
           }}
         >
-          Last
+          <img alt="Last" src={arrow} className={styles.arrowLeft} />
         </li>
       </ul>
     </div>

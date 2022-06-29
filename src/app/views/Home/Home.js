@@ -52,7 +52,7 @@ export const Home = ({ store }) => {
         )}
         {error && <div>Error: Unknown error</div>}
       </div>
-      <div className={styles.wrapperPages}>
+      <div className={styles.wrapperPagination}>
         <Pagination count={count} setPage={setPage} />
       </div>
     </div>
