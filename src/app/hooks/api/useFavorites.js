@@ -2,10 +2,7 @@ import { useState } from "react";
 
 export const useFavorites = () => {
   const [favorite, setFavorite] = useState(() => {
-    if (
-      localStorage.getItem("favorite") !== null &&
-      localStorage.getItem("favorite") !== "undefined"
-    ) {
+    if (localStorage.getItem("favorite") ?? false) {
       let data = JSON.parse(localStorage.getItem("favorite"));
       return data;
     } else {
