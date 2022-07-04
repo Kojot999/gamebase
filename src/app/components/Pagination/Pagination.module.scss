@@ -1,22 +1,18 @@
 .wrapper {
-  color: #fff;
-  .list {
-    list-style: none;
-    display: flex;
-    a {
+  display: flex;
+  margin: 10px 0 20px 0;
+  div {
+    button {
       color: #fff;
       font-size: 20px;
       padding-inline: 10px;
-      text-decoration: none;
+      background: none;
+      border: none;
       &:hover {
         background: #23243b;
         border-radius: 5px;
         cursor: pointer;
       }
-    }
-    .selected {
-      background: #23243b;
-      border-radius: 5px;
     }
     .arrowRight {
       width: 25px;

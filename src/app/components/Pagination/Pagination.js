@@ -1,64 +1,58 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useMemo } from "react";
+import { usePagination } from "../../hooks/common/usePagination";
 import styles from "./Pagination.module.scss";
 import arrow from "../../../Img/double arrow.svg";
 
 export const Pagination = ({ count, setPage }) => {
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(count / 20); i++) {
-    pageNumbers.push(i);
-  }
+  const [pageCount, setPageCount] = useState(20);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [paginateButtons] = usePagination(pageCount);
 
-  const [pageNumber, setPageNumber] = useState(0);
+  useMemo(() => {
+    count && setPageCount(Math.ceil(count / 20));
+  }, [count]);
 
-  const paginationItems = () => {
-    if (pageNumber === pageNumbers) {
-      return [];
-    } else {
-      return pageNumbers.slice(
-        pageNumber === 0 ? pageNumber : pageNumber - 1,
-        pageNumber >= 10000 ? pageNumber + 5 : pageNumber + 10
-      );
-    }
+  const paginationAction = (i) => {
+    setCurrentPage(i === pageCount ? pageCount : i);
+    setPage(i === pageCount ? pageCount : i);
   };
 
-  console.log({ pageNumber });
+  console.log(currentPage);
 
   return (
     <div className={styles.wrapper}>
-      <ul className={styles.list}>
-        <li
-          onClick={() => {
-            setPage(1);
-            setPageNumber(0);
-          }}
-        >
-          <img alt="First" src={arrow} className={styles.arrowRight} />
-        </li>
-        {paginationItems().map((number) => (
-          <li key={number}>
-            <NavLink
-              className={(item) => (item.isActive ? styles.selected : "")}
-              onClick={() => {
-                setPage(number);
-                setPageNumber(number - 1);
-              }}
-              to=""
-            >
-              {number}
-            </NavLink>
-          </li>
+      <div
+        onClick={() => {
+          setPage(1);
+          setCurrentPage(1);
+        }}
+      >
+        <img alt="First" src={arrow} className={styles.arrowRight} />
+      </div>
+      <div>
+        {paginateButtons(
+          currentPage >= 3 ? currentPage - 3 : currentPage - 1,
+          currentPage === 2 ? currentPage + 5 : currentPage + 3
+        ).map((i) => (
+          <button
+            onClick={() => {
+              count && paginationAction(i);
+            }}
+            style={{ background: currentPage !== i ? "" : "#23243b" }}
+            key={i}
+          >
+            {i}
+          </button>
         ))}
-
-        <li
-          onClick={() => {
-            setPage(pageNumbers.length);
-            setPageNumber(pageNumbers.length);
-          }}
-        >
-          <img alt="Last" src={arrow} className={styles.arrowLeft} />
-        </li>
-      </ul>
+      </div>
+      <div
+        onClick={() => {
+          setPage(pageCount);
+          setCurrentPage(pageCount);
+        }}
+      >
+        <img alt="Last" src={arrow} className={styles.arrowLeft} />
+      </div>
     </div>
   );
 };
