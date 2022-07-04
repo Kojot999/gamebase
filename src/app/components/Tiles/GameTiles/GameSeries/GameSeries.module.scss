@@ -17,19 +17,7 @@
   h2 {
     margin: 10px 0 10px 0;
   }
-  .screenShots {
-    cursor: pointer;
-    overflow: hidden;
-    background-color: rgba(35, 36, 59, 1);
-    background-image: linear-gradient(
-      180deg,
-      rgba(35, 36, 59, 1) 50%,
-      rgba(48, 50, 86, 1) 100%
-    );
-    border-radius: 15px;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  img {
+    width: 50px;
   }
 }

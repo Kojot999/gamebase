@@ -1,8 +1,9 @@
 .wrapper {
   margin: 15px 0 0 0;
   display: flex;
-  width: 32%;
+  width: 73%;
   margin-right: 2%;
+  height: 100%;
   .description {
     overflow: hidden;
     padding: 15px;
@@ -15,11 +16,5 @@
     box-shadow: -10px -10px 20px #090d1f, 10px 10px 20px #111739;
     border-radius: 15px;
     color: #fff;
-    height: 300px;
-    transition: all 500ms;
-    cursor: pointer;
-    &.isOpened {
-      height: fit-content;
-    }
   }
 }

@@ -12,8 +12,13 @@ const getGameScreenShots = async ({ id }) => {
   return await (await fetch(queryBuilder(`/games/${id}/screenshots`))).json();
 };
 
+const getGameSeries = async ({ id }) => {
+  return await (await fetch(queryBuilder(`/games/${id}/game-series`))).json();
+};
+
 export const games = {
   getGamesData,
   getGameData,
   getGameScreenShots,
+  getGameSeries,
 };

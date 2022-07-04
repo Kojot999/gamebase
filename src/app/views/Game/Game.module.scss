@@ -1,4 +1,5 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
+
 .wrapper {
   text-decoration: none;
   color: #fff;
@@ -132,11 +133,15 @@
       }
     }
   }
-  .secondaryTiles {
+  .secondaryTiles,
+  .thirdTiles {
     width: 100%;
     display: flex;
     flex-direction: row;
+    height: fit-content;
+    margin-bottom: 20px;
   }
+
   .loadingwrapper {
     display: flex;
     width: 100%;
@@ -173,17 +178,20 @@
   background: none !important;
 }
 
-.close {
-  position: absolute;
-  top: 25px;
-  left: 25px;
-  width: 30px;
-  height: 30px;
-  z-index: 9999 !important;
-}
-.screenShots {
-  img {
-    width: 100%;
-    border-radius: 20px;
+.wrapperModal {
+  overflow: hidden;
+  .close {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 30px;
+    height: 30px;
+    z-index: 9999 !important;
+  }
+  .wrapperImage {
+    .image {
+      width: 100%;
+      height: 100%;
+    }
   }
 }

@@ -7,12 +7,16 @@ import metacriticIcon from "../../../Img/metacritic.svg";
 import { PLATFORM_ICON_CONFIG } from "../../constants/platformIcon.config";
 import { StoresTile } from "../../components/Tiles/GameTiles/StoresTile/StoresTile";
 import { DescriptionTile } from "../../components/Tiles/GameTiles/DescriptionTile/DescriptionTile";
+import { GameSeries } from "../../components/Tiles/GameTiles/GameSeries/GameSeries";
 import { ScreenShotsTile } from "../../components/Tiles/GameTiles/ScreenShootsTile/ScreenShotsTile";
 import { useFavorites } from "../../hooks/api/useFavorites";
 import ReactModal from "react-modal";
 import { useGameScreenShots } from "../../hooks/api/useGameScreenShots";
 import close from "../../../Img/close.svg";
-import ImageGallery from "react-image-gallery";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { useGameSeries } from "../../hooks/api/useGameSeries";
 
 export const GameView = () => {
   const { data: game, isLoading, error, fetchData: fetchGame } = useGameData();
@@ -37,21 +41,42 @@ export const GameView = () => {
 
   const { results } = screenShots;
 
-  const images = results?.map(({ image }) => ({
-    original: image,
-    thumbnail: image,
-  }));
+  const { data: gameSeries, fetchData: fetchGameSeries } = useGameSeries();
 
   useEffect(() => {
     fetchGame({ id: params.id });
     fetchScreenShots({ id: params.id });
-  }, [fetchGame, fetchScreenShots, params.id]);
+    fetchGameSeries({ id: params.id });
+  }, [fetchGame, fetchScreenShots, fetchGameSeries, params.id]);
 
   const [favorite, addFavoriteGame] = useFavorites();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   ReactModal.setAppElement("#root");
+
+  var settings = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    dots: false,
+
+    responsive: [
+      {
+        breakpoint: 720,
+        settings: {
+          dots: false,
+          infinite: true,
+          speed: 500,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          autoplay: true,
+          autoplaySpeed: 6000,
+        },
+      },
+    ],
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -115,11 +140,14 @@ export const GameView = () => {
           </div>
           <div className={styles.secondaryTiles}>
             <DescriptionTile description={description} />
+            <StoresTile stores={stores} />
+          </div>
+          <div className={styles.thirdTiles}>
             <ScreenShotsTile
               additionalImg={additionalImg}
               setModalIsOpen={setModalIsOpen}
             />
-            <StoresTile stores={stores} />
+            <GameSeries gameSeries={gameSeries} />
           </div>
           <div>
             <ReactModal isOpen={modalIsOpen} contentLabel="Modal as">
@@ -130,7 +158,17 @@ export const GameView = () => {
                   onClick={() => setModalIsOpen(false)}
                   className={styles.close}
                 />
-                <ImageGallery items={images} />
+                <Slider {...settings}>
+                  {results?.map(({ image }) => (
+                    <div key={id} className={styles.wrapperImage}>
+                      <img
+                        alt="ScreenShot"
+                        src={image}
+                        className={styles.image}
+                      />
+                    </div>
+                  ))}
+                </Slider>
               </div>
             </ReactModal>
           </div>
