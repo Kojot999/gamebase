@@ -1,3 +1,7 @@
 .wrapper {
   color: #fff;
+  .wrapperTiles {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

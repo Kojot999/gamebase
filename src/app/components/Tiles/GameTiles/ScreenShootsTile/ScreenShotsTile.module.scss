@@ -2,10 +2,10 @@
   margin: 15px 0;
   display: flex;
   width: 32%;
+  height: fit-content;
   margin-right: 2%;
-  .stores {
-    display: flex;
-    flex-direction: column;
+  .screenShots {
+    overflow: hidden;
     background-color: rgba(35, 36, 59, 1);
     background-image: linear-gradient(
       180deg,
@@ -14,12 +14,9 @@
     );
     box-shadow: -10px -10px 20px #090d1f, 10px 10px 20px #111739;
     border-radius: 15px;
-    width: 100%;
-    text-decoration: none;
-    color: #fff;
-    align-items: center;
     img {
       width: 100%;
+      height: 100%;
     }
   }
 }

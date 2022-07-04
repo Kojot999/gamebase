@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  margin: 10px 0 20px 0;
+  div {
+    button {
+      color: #fff;
+      font-size: 20px;
+      padding-inline: 10px;
+      background: none;
+      border: none;
+      &:hover {
+        background: #23243b;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+    .arrowRight {
+      width: 25px;
+      height: 25px;
+      transform: rotate(180deg);
+      cursor: pointer;
+    }
+    .arrowLeft {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
+  }
+}

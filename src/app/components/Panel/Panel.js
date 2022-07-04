@@ -5,7 +5,7 @@ import { Sort } from "./Sort/Sort";
 export const Panel = ({ store }) => {
   return (
     <div className={styles.wrapper}>
-      <Sort />
+      <Sort store={store} />
       <Search store={store} />
     </div>
   );
