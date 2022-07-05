@@ -3,10 +3,16 @@
   flex-direction: column;
   .wrapperPanel {
     display: flex;
+    @media only all and (max-width: 520px) {
+      justify-content: center;
+    }
   }
   .wrapperTiles {
     display: flex;
     flex-wrap: wrap;
+    @media only all and (max-width: 520px) {
+      justify-content: center;
+    }
   }
   .loadingwrapper {
     display: flex;
@@ -17,6 +23,6 @@
     color: #fff;
   }
   .wrapperPagination {
-    margin-inline: auto;
+    margin: auto;
   }
 }

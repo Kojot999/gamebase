@@ -5,6 +5,9 @@
   background-color: #23243b;
   border: none;
   border-radius: 10px;
+  @media only all and (max-width: 640px) {
+    margin-left: 15px;
+  }
   img {
     width: 20px;
     margin-right: 5px;

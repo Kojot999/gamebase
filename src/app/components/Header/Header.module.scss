@@ -4,6 +4,9 @@
   color: white;
   font-weight: 600;
   letter-spacing: 2px;
+  @media only all and (max-width: 520px) {
+    justify-content: center;
+  }
   .wrapperNav {
     display: flex;
     a {
@@ -12,6 +15,9 @@
       margin-inline: 10px;
       align-items: center;
       display: flex;
+      @media only all and (max-width: 640px) {
+        margin-inline: 5px;
+      }
       p {
         padding: 10px;
         &:hover {

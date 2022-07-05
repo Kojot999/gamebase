@@ -3,6 +3,9 @@
   padding-inline: 5px;
   color: #fff;
   min-height: 100%;
+  @media only all and (max-width: 520px) {
+    display: none;
+  }
   .logoWrapper {
     display: flex;
     align-items: center;

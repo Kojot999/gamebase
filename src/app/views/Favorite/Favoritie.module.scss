@@ -3,5 +3,8 @@
   .wrapperTiles {
     display: flex;
     flex-wrap: wrap;
+    @media only all and (max-width: 520px) {
+      justify-content: center;
+    }
   }
 }

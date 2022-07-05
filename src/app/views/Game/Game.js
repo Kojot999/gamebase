@@ -7,16 +7,15 @@ import metacriticIcon from "../../../Img/metacritic.svg";
 import { PLATFORM_ICON_CONFIG } from "../../constants/platformIcon.config";
 import { StoresTile } from "../../components/Tiles/GameTiles/StoresTile/StoresTile";
 import { DescriptionTile } from "../../components/Tiles/GameTiles/DescriptionTile/DescriptionTile";
-import { GameSeries } from "../../components/Tiles/GameTiles/GameSeries/GameSeries";
+import { GameSeriesTile } from "../../components/Tiles/GameTiles/GameSeriesTile/GameSeriesTile";
 import { ScreenShotsTile } from "../../components/Tiles/GameTiles/ScreenShootsTile/ScreenShotsTile";
 import { useFavorites } from "../../hooks/api/useFavorites";
 import ReactModal from "react-modal";
 import { useGameScreenShots } from "../../hooks/api/useGameScreenShots";
 import close from "../../../Img/close.svg";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useGameSeries } from "../../hooks/api/useGameSeries";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export const GameView = () => {
   const { data: game, isLoading, error, fetchData: fetchGame } = useGameData();
@@ -33,7 +32,6 @@ export const GameView = () => {
     developers,
     stores,
     description_raw: description,
-    background_image_additional: additionalImg,
   } = game;
 
   const { data: screenShots, fetchData: fetchScreenShots } =
@@ -53,30 +51,17 @@ export const GameView = () => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  const closeFun = useEffect(() => {
+    const handleRequestCloseFunc = (e) => {
+      if (e.keyCode === 27) {
+        setModalIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleRequestCloseFunc);
+    return () => window.removeEventListener("keydown", handleRequestCloseFunc);
+  }, [modalIsOpen]);
+
   ReactModal.setAppElement("#root");
-
-  var settings = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    infinite: true,
-    dots: false,
-
-    responsive: [
-      {
-        breakpoint: 720,
-        settings: {
-          dots: false,
-          infinite: true,
-          speed: 500,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          autoplay: true,
-          autoplaySpeed: 6000,
-        },
-      },
-    ],
-  };
 
   return (
     <div className={styles.wrapper}>
@@ -107,7 +92,7 @@ export const GameView = () => {
               <h3 className={styles.title}>{name}</h3>
               <div className={styles.genres}>
                 <ul>
-                  {genres.map((genres) => (
+                  {genres?.map((genres) => (
                     <li key={genres.id}>
                       <a href="/">#{genres.name}</a>
                     </li>
@@ -144,31 +129,32 @@ export const GameView = () => {
           </div>
           <div className={styles.thirdTiles}>
             <ScreenShotsTile
-              additionalImg={additionalImg}
               setModalIsOpen={setModalIsOpen}
+              results={results}
             />
-            <GameSeries gameSeries={gameSeries} />
+            <GameSeriesTile gameSeries={gameSeries} />
           </div>
           <div>
-            <ReactModal isOpen={modalIsOpen} contentLabel="Modal as">
-              <div className={styles.wrapperModal}>
-                <img
-                  alt=""
-                  scr={close}
-                  onClick={() => setModalIsOpen(false)}
-                  className={styles.close}
-                />
-                <Slider {...settings}>
+            <ReactModal
+              onRequestClose={closeFun}
+              isOpen={modalIsOpen}
+              contentLabel="Modal as"
+            >
+              <div>
+                <div className={styles.wrapperClose}>
+                  <img
+                    alt=""
+                    scr={close}
+                    onClick={() => setModalIsOpen(false)}
+                  />
+                </div>
+                <Carousel>
                   {results?.map(({ image }) => (
-                    <div key={id} className={styles.wrapperImage}>
-                      <img
-                        alt="ScreenShot"
-                        src={image}
-                        className={styles.image}
-                      />
+                    <div key={id}>
+                      <img alt="ScreenShot" src={image} />
                     </div>
                   ))}
-                </Slider>
+                </Carousel>
               </div>
             </ReactModal>
           </div>

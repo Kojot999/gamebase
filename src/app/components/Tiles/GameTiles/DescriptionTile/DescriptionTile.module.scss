@@ -4,6 +4,9 @@
   width: 73%;
   margin-right: 2%;
   height: 100%;
+  @media only all and (max-width: 920px) {
+    width: 100%;
+  }
   .description {
     overflow: hidden;
     padding: 15px;
