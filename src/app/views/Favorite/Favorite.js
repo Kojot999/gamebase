@@ -3,8 +3,12 @@ import { HomeTile } from "../../components/Tiles/HomeTile/HomeTile";
 import { useCallback, useEffect, useState } from "react";
 import { api } from "../../api";
 
-export const Favorites = () => {
+export const Favorites = ({ store }) => {
+  const { isLoading, error } = store;
+
   const [favGames, setFavGames] = useState(null);
+
+  const isContentVisible = !isLoading && !error;
 
   const fetchFavorites = useCallback(async () => {
     const favData = JSON.parse(localStorage.getItem("favorite"));
@@ -22,10 +26,18 @@ export const Favorites = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.wrapperTiles}>
-        {favGames &&
-          favGames.map((game) => <HomeTile key={game.id} data={game} />)}
-      </div>
+      {isContentVisible && (
+        <div className={styles.wrapperTiles}>
+          {favGames &&
+            favGames.map((game) => <HomeTile key={game.id} data={game} />)}
+        </div>
+      )}
+      {isLoading && (
+        <div className={styles.loadingwrapper}>
+          <p>Loading...</p>
+        </div>
+      )}
+      {error && <div>Error: Unknown error</div>}
     </div>
   );
 };

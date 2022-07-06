@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   flex-wrap: wrap;
+  color: #fff;
   @media only all and (max-width: 520px) {
     justify-content: center;
   }

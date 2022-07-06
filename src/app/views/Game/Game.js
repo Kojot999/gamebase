@@ -12,7 +12,6 @@ import { ScreenShotsTile } from "../../components/Tiles/GameTiles/ScreenShootsTi
 import { useFavorites } from "../../hooks/api/useFavorites";
 import ReactModal from "react-modal";
 import { useGameScreenShots } from "../../hooks/api/useGameScreenShots";
-import close from "../../../Img/close.svg";
 import { useGameSeries } from "../../hooks/api/useGameSeries";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -50,16 +49,6 @@ export const GameView = () => {
   const [favorite, addFavoriteGame] = useFavorites();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const closeFun = useEffect(() => {
-    const handleRequestCloseFunc = (e) => {
-      if (e.keyCode === 27) {
-        setModalIsOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleRequestCloseFunc);
-    return () => window.removeEventListener("keydown", handleRequestCloseFunc);
-  }, [modalIsOpen]);
 
   ReactModal.setAppElement("#root");
 
@@ -136,19 +125,19 @@ export const GameView = () => {
           </div>
           <div>
             <ReactModal
-              onRequestClose={closeFun}
+              onRequestClose={() => setModalIsOpen(false)}
               isOpen={modalIsOpen}
               contentLabel="Modal as"
+              shouldCloseOnOverlayClick={true}
             >
               <div>
-                <div className={styles.wrapperClose}>
-                  <img
-                    alt=""
-                    scr={close}
-                    onClick={() => setModalIsOpen(false)}
-                  />
+                <div
+                  onClick={() => setModalIsOpen(false)}
+                  className={styles.wrapperClose}
+                >
+                  <h3>Close</h3>
                 </div>
-                <Carousel>
+                <Carousel dynamicHeight={true} width="100%">
                   {results?.map(({ image }) => (
                     <div key={id}>
                       <img alt="ScreenShot" src={image} />

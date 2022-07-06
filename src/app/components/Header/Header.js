@@ -5,6 +5,11 @@ import { ROUTES } from "../../constants/routes";
 export const Header = () => {
   return (
     <div className={styles.wrapper}>
+      <div className={styles.logoWrapper}>
+        <span>
+          Game<strong>Base</strong>
+        </span>
+      </div>
       <div className={styles.wrapperNav}>
         {ROUTES.map(
           ({ path, name, isNavigation }) =>
