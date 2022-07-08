@@ -59,11 +59,7 @@ export const GameView = () => {
           <div className={styles.tileMain}>
             <div className={styles.wrapperImg}>
               <div className={styles.overlay}>
-                <img
-                  alt="gameIMG"
-                  src={backgroundImage}
-                  className={styles.gameImg}
-                />
+                <img alt="gameIMG" src={backgroundImage} />
               </div>
             </div>
             <div className={styles.favorites}>

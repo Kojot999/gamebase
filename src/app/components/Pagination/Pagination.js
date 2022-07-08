@@ -17,8 +17,6 @@ export const Pagination = ({ count, setPage }) => {
     setPage(i === pageCount ? pageCount : i);
   };
 
-  console.log(currentPage);
-
   return (
     <div className={styles.wrapper}>
       <div

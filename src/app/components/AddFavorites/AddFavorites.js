@@ -1,8 +1,15 @@
 import styles from "./AddFavorities.moudle.scss";
 import star from "../../../Img/star.svg";
 import starFilled from "../../../Img/starFilled.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AddFavorite = ({ favorite, setFavorite, id }) => {
+  const notify = () =>
+    toast(
+      favorite.includes(id) ? "Deleted from Favorites" : "Added to Favorites"
+    );
+
   return (
     <div className={styles.wrapper}>
       <img
@@ -15,8 +22,10 @@ export const AddFavorite = ({ favorite, setFavorite, id }) => {
           e.stopPropagation();
           e.preventDefault();
           setFavorite(id);
+          notify();
         }}
       />
+      <ToastContainer />
     </div>
   );
 };
