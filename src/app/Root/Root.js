@@ -18,7 +18,9 @@ function Root() {
 
   return (
     <Layout>
-      <Sidebar store={store} />
+      <div className="wrapperSiderbar">
+        <Sidebar store={store} />
+      </div>
       <main>
         <Header />
         <>

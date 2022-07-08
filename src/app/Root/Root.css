@@ -3,3 +3,8 @@ main {
   flex-direction: column;
   width: 100%;
 }
+@media only all and (max-width: 520px) {
+  .wrapperSiderbar {
+    display: none;
+  }
+}

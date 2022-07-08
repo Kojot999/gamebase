@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Panel } from "../../components/Panel/Panel";
 import { Pagination } from "../../components/Pagination/Pagination";
+import { Sidebar } from "../../components/Sidebar/Sidebar";
 
 export const Home = ({ store }) => {
   const {
@@ -35,6 +36,9 @@ export const Home = ({ store }) => {
     <div className={styles.wrapper}>
       <div className={styles.wrapperPanel}>
         <Panel store={store} />
+      </div>
+      <div className={styles.wrapperSideBar}>
+        <Sidebar store={store} />
       </div>
       <div className={styles.wrapperTiles}>
         {isContentVisible && (

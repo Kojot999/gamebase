@@ -7,12 +7,14 @@ import metacriticIcon from "../../../Img/metacritic.svg";
 import { PLATFORM_ICON_CONFIG } from "../../constants/platformIcon.config";
 import { StoresTile } from "../../components/Tiles/GameTiles/StoresTile/StoresTile";
 import { DescriptionTile } from "../../components/Tiles/GameTiles/DescriptionTile/DescriptionTile";
+import { GameSeriesTile } from "../../components/Tiles/GameTiles/GameSeriesTile/GameSeriesTile";
 import { ScreenShotsTile } from "../../components/Tiles/GameTiles/ScreenShootsTile/ScreenShotsTile";
 import { useFavorites } from "../../hooks/api/useFavorites";
 import ReactModal from "react-modal";
 import { useGameScreenShots } from "../../hooks/api/useGameScreenShots";
-import close from "../../../Img/close.svg";
-import ImageGallery from "react-image-gallery";
+import { useGameSeries } from "../../hooks/api/useGameSeries";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export const GameView = () => {
   const { data: game, isLoading, error, fetchData: fetchGame } = useGameData();
@@ -29,7 +31,6 @@ export const GameView = () => {
     developers,
     stores,
     description_raw: description,
-    background_image_additional: additionalImg,
   } = game;
 
   const { data: screenShots, fetchData: fetchScreenShots } =
@@ -37,15 +38,13 @@ export const GameView = () => {
 
   const { results } = screenShots;
 
-  const images = results?.map(({ image }) => ({
-    original: image,
-    thumbnail: image,
-  }));
+  const { data: gameSeries, fetchData: fetchGameSeries } = useGameSeries();
 
   useEffect(() => {
     fetchGame({ id: params.id });
     fetchScreenShots({ id: params.id });
-  }, [fetchGame, fetchScreenShots, params.id]);
+    fetchGameSeries({ id: params.id });
+  }, [fetchGame, fetchScreenShots, fetchGameSeries, params.id]);
 
   const [favorite, addFavoriteGame] = useFavorites();
 
@@ -82,7 +81,7 @@ export const GameView = () => {
               <h3 className={styles.title}>{name}</h3>
               <div className={styles.genres}>
                 <ul>
-                  {genres.map((genres) => (
+                  {genres?.map((genres) => (
                     <li key={genres.id}>
                       <a href="/">#{genres.name}</a>
                     </li>
@@ -115,22 +114,36 @@ export const GameView = () => {
           </div>
           <div className={styles.secondaryTiles}>
             <DescriptionTile description={description} />
-            <ScreenShotsTile
-              additionalImg={additionalImg}
-              setModalIsOpen={setModalIsOpen}
-            />
             <StoresTile stores={stores} />
           </div>
+          <div className={styles.thirdTiles}>
+            <ScreenShotsTile
+              setModalIsOpen={setModalIsOpen}
+              results={results}
+            />
+            <GameSeriesTile gameSeries={gameSeries} />
+          </div>
           <div>
-            <ReactModal isOpen={modalIsOpen} contentLabel="Modal as">
-              <div className={styles.wrapperModal}>
-                <img
-                  alt=""
-                  scr={close}
+            <ReactModal
+              onRequestClose={() => setModalIsOpen(false)}
+              isOpen={modalIsOpen}
+              contentLabel="Modal as"
+              shouldCloseOnOverlayClick={true}
+            >
+              <div>
+                <div
                   onClick={() => setModalIsOpen(false)}
-                  className={styles.close}
-                />
-                <ImageGallery items={images} />
+                  className={styles.wrapperClose}
+                >
+                  <h3>Close</h3>
+                </div>
+                <Carousel dynamicHeight={true} width="100%">
+                  {results?.map(({ image }) => (
+                    <div key={id}>
+                      <img alt="ScreenShot" src={image} />
+                    </div>
+                  ))}
+                </Carousel>
               </div>
             </ReactModal>
           </div>

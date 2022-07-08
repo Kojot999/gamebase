@@ -3,10 +3,23 @@
   flex-direction: column;
   .wrapperPanel {
     display: flex;
+    @media only all and (max-width: 520px) {
+      justify-content: center;
+    }
+  }
+  .wrapperSideBar {
+    display: none;
+    @media only all and (max-width: 520px) {
+      display: flex;
+      justify-content: center;
+    }
   }
   .wrapperTiles {
     display: flex;
     flex-wrap: wrap;
+    @media only all and (max-width: 520px) {
+      justify-content: center;
+    }
   }
   .loadingwrapper {
     display: flex;
@@ -17,6 +30,16 @@
     color: #fff;
   }
   .wrapperPagination {
-    margin-inline: auto;
+    margin-left: 340px;
+    max-width: 350px;
+    @media only all and (max-width: 1165px) {
+      margin-left: 165px;
+    }
+    @media only all and (max-width: 845px) {
+      margin-left: 25px;
+    }
+    @media only all and (max-width: 520px) {
+      margin: auto;
+    }
   }
 }
